@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="Few-shot instance segmentation extends the few-shot learning paradigm to the instance segmentation task, which tries to segment instance objects from a..." name="description">
+<meta content="MaskDiff" name="keywords">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="MaskDiff: Modeling Mask Distribution with Diffusion Probabilistic Model for Few-Shot Instance Segmentation" property="og:title">
+  <meta content="Few-shot instance segmentation extends the few-shot learning paradigm to the instance segmentation task, which tries to segment instance objects from a..." property="og:description">
+  <meta content="website" property="og:type">
+  <meta content="https://minhquanlecs.github.io/maskdiff/static/images/fig2.png" property="og:image">
+<link rel="canonical" href="https://minhquanlecs.github.io/maskdiff/">
+<meta property="og:url" content="https://minhquanlecs.github.io/maskdiff/">
+<title>MaskDiff: Modeling Mask Distribution with Diffusion Probabilistic Model for Few-Shot Instance Segmentation</title>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+<link href="./static/css/bulma.min.css" rel="stylesheet">
+<link href="./static/css/bulma-carousel.min.css" rel="stylesheet">
+<link href="./static/css/bulma-slider.min.css" rel="stylesheet">
+<link href="./static/css/fontawesome.all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
+<link href="./static/css/index.css" rel="stylesheet">
+<link href="./static/images/favicon.png" rel="icon" type="image/png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/index.js"></script>
+</head>
+<body>
+<nav aria-label="main navigation" class="navbar" role="navigation">
+<div class="navbar-brand">
+<a aria-expanded="false" aria-label="menu" class="navbar-burger" role="button">
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+</a>
+</div>
+<div class="navbar-menu">
+<div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+<a aria-label="Home" class="navbar-item" href="https://minhquanlecs.github.io/maskdiff/">
+<span class="icon">
+<i class="fas fa-home"></i>
+</span>
+</a>
+
+</div>
+</div>
+</nav>
+<section class="hero">
+<div class="hero-body">
+<div class="container is-max-desktop">
+<div class="columns is-centered">
+<div class="column has-text-centered">
+<h1 class="title is-1 publication-title">MaskDiff: Modeling Mask Distribution with Diffusion Probabilistic Model for Few-Shot Instance Segmentation</h1>
+<div class="is-size-5 publication-authors">
+<span class="author-block">Minh-Quan&nbsp;Le<sup>1,2,3</sup>,</span>
+<span class="author-block">Tam&nbsp;V.&nbsp;Nguyen<sup>4</sup>,</span>
+<span class="author-block">Trung-Nghia&nbsp;Le<sup>1,2</sup>,</span>
+<span class="author-block">Thanh-Toan&nbsp;Do<sup>5</sup>,</span>
+<span class="author-block">Minh&nbsp;N.&nbsp;Do<sup>6</sup>,</span>
+<span class="author-block">Minh-Triet&nbsp;Tran<sup>1,2*</sup></span>
+</div>
+<div class="is-size-5 publication-authors">
+<span class="author-block"><sup>1</sup>University of Science, VNU-HCM, Ho Chi Minh City, Vietnam,</span>
+<span class="author-block"><sup>2</sup>Vietnam National University, Ho Chi Minh City, Vietnam,</span>
+<span class="author-block"><sup>3</sup>Stony Brook University, United States,</span>
+<span class="author-block"><sup>4</sup>University of Dayton, United States,</span>
+<span class="author-block"><sup>5</sup>Monash University, Australia,</span>
+<span class="author-block"><sup>6</sup>University of Illinois at Urbana-Champaign, United States</span>
+</div>
+
+          <div class="is-size-5 publication-authors">
+<span class="author-block">AAAI Conference on Artificial Intelligence 2024</span>
+</div>
+
+          <div class="is-size-5 publication-authors">
+<span class="author-block"><sup>*</sup>Corresponding&nbsp;author</span>
+</div>
+<div class="column has-text-centered">
+<div class="publication-links">
+<span class="link-block">
+<a aria-disabled="true" class="external-link button is-normal is-rounded is-dark" disabled title="Coming soon">
+<span class="icon">
+<i class="fas fa-file-pdf"></i>
+</span>
+<span>Paper&nbsp;(coming&nbsp;soon)</span>
+</a>
+</span>
+<span class="link-block">
+<a aria-disabled="true" class="external-link button is-normal is-rounded is-dark" disabled title="Coming soon">
+<span class="icon">
+<i class="fab fa-github"></i>
+</span>
+<span>Code&nbsp;(coming&nbsp;soon)</span>
+</a>
+</span>
+<span class="link-block">
+<a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2303.05105">
+<span class="icon">
+<i class="ai ai-arxiv"></i>
+</span>
+<span>arXiv</span>
+</a>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="hero teaser">
+<div class="container is-max-desktop">
+<div class="hero-body">
+
+<img alt="Figure 2: Our MaskDiff is built upon TFA (Wang et al. 2020) by integrating a mask distribution modeling head and adapting guided sampling to integrate category information into mask generation procedure." class="interpolation-image" height="283" loading="lazy" src="./static/images/fig2.png" width="1012">
+      <h2 class="subtitle has-text-centered">MaskDiff models conditional mask distributions for few-shot&nbsp;instance&nbsp;segmentation.</h2>
+</div>
+</div>
+</section>
+
+
+<section class="section">
+<div class="container is-max-desktop">
+
+<div class="columns is-centered has-text-centered">
+<div class="column is-four-fifths">
+<h2 class="title is-3">Abstract</h2>
+<div class="content has-text-justified"><p>Few-shot instance segmentation extends the few-shot learning paradigm to the instance segmentation task, which tries to segment instance objects from a query image with a few annotated examples of novel categories. Conventional approaches have attempted to address the task via prototype learning, known as point estimation. However, this mechanism depends on prototypes (e.g. mean of K-shot) for prediction, leading to performance instability. To overcome the disadvantage of the point estimation mechanism, we propose a novel approach, dubbed MaskDiff, which models the underlying conditional distribution of a binary mask, which is conditioned on an object region&nbsp;and&nbsp;K-shot&nbsp;information.</p><p>Inspired by augmentation approaches that perturb data with Gaussian noise for populating low data density regions, we model the mask distribution with a diffusion probabilistic model. We also propose to utilize classifier-free guided mask sampling to integrate category information into the binary mask generation process. Without bells and whistles, our proposed method consistently outperforms state-of-the-art methods on both base and novel classes of the COCO dataset while simultaneously being more stable than existing methods. The source code is available at: https://github.com/minhquanlecs/MaskDiff.</p></div>
+</div>
+</div>
+
+
+
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container is-max-desktop">
+
+<div class="columns is-centered has-text-centered">
+<div class="column is-four-fifths">
+<h2 class="title is-3">Method</h2>
+<div class="content has-text-justified"><p>MaskDiff extends TFA with a mask distribution modeling head that uses a conditional diffusion model to generate binary instance masks from detected object regions and K-shot examples. Classifier-free guided sampling incorporates category information. Training has two stages: train on base classes, then freeze the feature extractor and fine-tune prediction heads on&nbsp;base&nbsp;and&nbsp;novel&nbsp;classes.</p></div>
+<div class="columns"><div class="column is-8 is-offset-2"><div class="content has-text-centered"><img alt="Figure 3: Pipeline of diffusion-based two-stage training." class="interpolation-image" height="528" loading="lazy" src="./static/images/fig3.png" width="1014"><p class="is-size-7 has-text-grey-dark has-text-justified mt-2"><strong>Figure&nbsp;3.</strong> Pipeline of diffusion-based two-stage training. In the first stage, the entire object detector (feature extractor, classifier, and box regressor) and the mask distribution modeling head are trained separately on the base classes. In the second stage, the feature extractor is frozen while the cosine classifier, the box regressor, and the mask distribution modeling head are jointly fine-tuned on both base and novel classes. Our mask distribution modeling head is trained based on diffusion (yellow), while the remaining two heads follow the standard object detection&nbsp;training&nbsp;(blue).</p></div></div></div><div class="columns"><div class="column is-8 is-offset-2"><div class="content has-text-centered"><img alt="Figure 4: Conditional diffusion model for few-shot binary mask segmentation." class="interpolation-image" height="359" loading="lazy" src="./static/images/fig4.png" width="1018"><p class="is-size-7 has-text-grey-dark has-text-justified mt-2"><strong>Figure&nbsp;4.</strong> Conditional diffusion model for few-shot binary mask segmentation. The directed graphical model transforms the noise from standard Gaussian distribution to the mask representation of objects through an iterative denoising process. Solid arrows indicate the reverse process, while the dashed arrow implies the forward step. y, x, k denote binary masks, object regions and removed background version of K-shot samples,&nbsp;respectively.</p></div></div></div></div>
+</div>
+
+
+
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container is-max-desktop">
+
+<div class="columns is-centered has-text-centered">
+<div class="column is-four-fifths">
+<h2 class="title is-3">Quantitative Results</h2>
+
+<div class="columns"><div class="column is-8 is-offset-2"><p class="is-size-7 has-text-grey-dark has-text-centered mb-2"><strong>Table&nbsp;4.</strong> Runtime of FSIS (1-shot)&nbsp;on&nbsp;COCO&nbsp;dataset.</p><div class="content has-text-centered"><img alt="Table 4: Runtime of FSIS (1-shot) on COCO dataset." class="interpolation-image" height="292" loading="lazy" src="./static/images/table4.png" width="1004"></div></div></div><div class="content has-text-justified"><p>MaskDiff has the longest training time in the table (32.3&nbsp;hours for base training and 16.1&nbsp;hours for fine-tuning) and the lowest inference speed at 8.27&nbsp;FPS. iFS-RCNN reaches 10.28&nbsp;FPS with training times&nbsp;of&nbsp;28.5&nbsp;and&nbsp;15.6&nbsp;hours.</p></div><div class="columns"><div class="column is-8 is-offset-2"><p class="is-size-7 has-text-grey-dark has-text-justified mb-2"><strong>Table&nbsp;8.</strong> Stability of FSIS on COCO-All dataset. MaskDiff is the most stable method with the smallest standard deviation of AP. The best performance is marked in boldface. Results on other K-shot are&nbsp;described&nbsp;in&nbsp;Supp.</p><div class="content has-text-centered"><img alt="Table 8: Stability of FSIS on COCO-All dataset. MaskDiff is the most stable method with the smallest standard deviation of AP. The best performance is marked in boldface. Results on other K-shot are described in Supp." class="interpolation-image" height="234" loading="lazy" src="./static/images/table8.png" width="997"></div></div></div><div class="content has-text-justified"><p>On the 1-shot COCO-All evaluation, MaskDiff records the highest AP for all classes (29.42 &plusmn; 0.09), base classes (37.59 &plusmn; 0.0093), and novel classes (4.85 &plusmn; 0.24) among the listed methods. The paper reports this as the most stable method, while results for other shot counts&nbsp;are&nbsp;in&nbsp;the&nbsp;supplement.</p></div><div class="columns"><div class="column is-8 is-offset-2"><div class="content has-text-centered"><img alt="Figure 6: MaskDiff preserves spatial information, especially at detailed levels." class="interpolation-image" height="641" loading="lazy" src="./static/images/fig6.png" width="1005"><p class="is-size-7 has-text-grey-dark has-text-justified mt-2"><strong>Figure&nbsp;6.</strong> MaskDiff preserves spatial information, especially at detailed levels. We compare the performance of MaskDiff with state-of-the-art methods in one-shot instance segmentation at different IoU thresholds. MaskDiff outperforms other methods with large margins at high IoU thresholds, which indicates its ability to segment objects&nbsp;more&nbsp;precisely.</p></div></div></div></div>
+</div>
+
+
+
+
+</div>
+</section>
+
+
+<section class="section">
+<div class="container is-max-desktop">
+
+<div class="columns is-centered has-text-centered">
+<div class="column is-four-fifths">
+<h2 class="title is-3">Qualitative Results</h2>
+<div class="content has-text-justified"><p>In one-shot inference on COCO novel classes, the visual examples show successful segmentations as well as failures from misclassification, missed detections, and&nbsp;imprecise&nbsp;boundaries.</p></div>
+<div class="content has-text-centered"><img alt="Figure 5: Inference example of our MaskDiff when training and inference on one-shot setting for the COCO novel classes." class="interpolation-image" height="380" loading="lazy" src="./static/images/fig5.jpg" width="2123"><p class="is-size-7 has-text-grey-dark has-text-justified has-text-centered-desktop mt-2"><strong>Figure&nbsp;5.</strong> Inference example of our MaskDiff when training and inference on one-shot setting for the&nbsp;COCO&nbsp;novel&nbsp;classes.</p></div></div>
+</div>
+
+
+
+
+</div>
+</section>
+
+
+<section class="section" id="BibTeX">
+<div class="container is-max-desktop content">
+<h2 class="title">BibTeX</h2>
+<pre><code>@article{le2024maskdiff,
+  author  = {Le, Minh-Quan and Nguyen, Tam V. and Le, Trung-Nghia and Do, Thanh-Toan and Do, Minh N. and Tran, Minh-Triet},
+  title   = {MaskDiff: Modeling Mask Distribution with Diffusion Probabilistic Model for Few-Shot Instance Segmentation},
+  journal = {AAAI Conference on Artificial Intelligence},
+  year    = {2024},
+}</code></pre>
+</div>
+</section>
+
+
+
+
+
+<footer class="footer">
+<div class="container">
+<div class="content has-text-centered">
+
+
+</div>
+<div class="columns is-centered">
+<div class="column is-8">
+<div class="content">
+<p>
+            This website is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+<p>
+            This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
